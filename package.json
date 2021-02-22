@@ -4,12 +4,18 @@
   "description": "for learning",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "vikash",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.17"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }

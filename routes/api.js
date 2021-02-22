@@ -1,24 +1,21 @@
 const express = require("express");
 const Router = express.Router();
-const axios = require('axios')
-const testdata = require('../Data/testdata'); 
+const axios = require("axios");
+const testdata = require("../Data/testdata");
 
-Router.post('/',(req,res)=>{
-    const name = req.body.name;
-    const age = req.body.age;
-    const id = req.body.id;
-    
-    axios.get('https://reqres.in/api/users?page=2')
-    .then(resp=>{
-        const filterdata = resp.data.data.filter(data=>{
-        if(data.id==id){
-            return data;
-         }
-        })
-        res.json(filterdata)
-    })
-    
-    
-})
+Router.post("/", (req, res) => {
+  const userId = req.body.userId;
+  const Id = req.body.Id;
 
-module.exports=Router;
+  axios.get("https://jsonplaceholder.typicode.com/posts").then((resp) => {
+    const filterdata = resp.data.filter((data) => {
+      if (data.userId == userId && data.id == Id) {
+        return data;
+      }
+    });
+
+    res.json(filterdata);
+  });
+});
+
+module.exports = Router;
