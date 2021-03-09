@@ -11,20 +11,8 @@ Router.post("/", async (req, res) => {
       console.log(err);
     }
     if (data) {
-      res.status(400).json({
-        mongoose.connect(process.env.DB_Connect, { useNewUrlParser: true }, () => {
-          console.log("database is connected");
-        });
-        
-        app.get("/", (req, res) => {
-          res.send("Hello this is homepage");
-        });
-        
-        app.listen(Port, () => {
-          console.log("server started");
-        });
-        
-      // res.json({ msg: "new will be added now" });
+      res.json({ msg: "user already exist" });
+    } else {
       const user = new User({
         name: name,
         age: age,
