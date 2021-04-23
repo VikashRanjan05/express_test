@@ -7,18 +7,22 @@ const Port = 3005;
 app.use(express.json());
 
 // Routes
-app.use("/api", require("./routes/api.js"));
-app.use("/addData", require("./routes/adddata.js"));
-app.use("/userdetails", require("./routes/alluser"));
-app.use("/updatedetails", require("./routes/updatedetail"));
-app.use("/deletedata", require("./routes/deletedata"));
+app.use("/user", require("./routes/User.js"));
 
 dotenv.config();
 
 // Connect to DB
-mongoose.connect(process.env.DB_Connect, { useNewUrlParser: true }, () => {
-  console.log("database is connected");
-});
+// mongoose.connect(process.env.DB_Connect, { useNewUrlParser: true }, () => {
+//   console.log("database is connected");
+// });
+
+mongoose.connect(
+  "mongodb://127.0.0.1/Test",
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("database is connected");
+  }
+);
 
 app.get("/", (req, res) => {
   res.send("Hello this is homepage");
